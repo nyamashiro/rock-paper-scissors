@@ -20,3 +20,13 @@ function getComputerChoice() {
   // return the variable
   return computerChoice
 }
+
+//create a function getHumanChoice
+function getHumanChoice() {
+
+  //ask user for their input (rock, paper or scissors) and assign it to the variable humanChoice
+  let humanChoice = prompt("What is your choice?").toLowerCase();
+
+  //return the valid input
+  return humanChoice
+}
