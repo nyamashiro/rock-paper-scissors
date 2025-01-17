@@ -1,3 +1,8 @@
+//create global variables humanScore and computerScore
+let humanScore = 0;
+let computerScore = 0;
+//initialize these variables with value of 0
+
 // create a function getComputerChoice
 function getComputerChoice() {
 
