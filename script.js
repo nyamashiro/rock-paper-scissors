@@ -63,9 +63,8 @@ function playRound(humanChoice, computerChoice) {
 
 //create a new function playGame that will play 5 rounds of RPS
 function playGame() {
-  //program begins to run from here, when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
-
   for (let i = 0; i < 5; i++) {
+    //when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
     let humanSelection = getHumanChoice();
     let computerSelection = getComputerChoice();
 
