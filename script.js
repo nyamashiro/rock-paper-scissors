@@ -40,33 +40,54 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
   //compare the two variables, and determine a winner based on RPS rules
   if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
-    
+
     //output a string for e.g. "YOu win/lose! Paper beats Rock"
     console.log(`You win! ${humanChoice} beats ${computerChoice}`)
 
     //increment the humanScore or computerScore variable based on the winner of the round
     humanScore++
   } else if ((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "rock")) {
-    
+
     //output a string for e.g. "YOu win/lose! Paper beats Rock"
     console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
 
     //increment the humanScore or computerScore variable based on the winner of the round
     computerScore++
   } else {
-    
+
     //output a string for e.g. "YOu win/lose! Paper beats Rock"
     console.log("It's a tie!")
   }
 }
 
-//program begins to run from here, when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection)
+//create a new function playGame that will play 5 rounds of RPS
+function playGame() {
+  //program begins to run from here, when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
 
-console.log(humanScore, computerScore)
+  for (let i = 0; i < 5; i++) {
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection)
+  }
+
+  declareWinner();
+}
+
+
+function declareWinner () {
+  if (humanScore > computerScore) {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Player wins!`)
+  } else if (humanScore < computerScore) {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Computer wins!`)
+  } else {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. It's a tie!`)
+  }
+}
+
+
+playGame();
 
 
 
