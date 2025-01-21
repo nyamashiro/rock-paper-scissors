@@ -1,5 +1,7 @@
 const buttons = document.querySelector(".buttons-container");
 const results = document.querySelector(".results");
+
+const showResults = document.createElement("div");
 let humanScore = 0;
 let computerScore = 0;
 
@@ -27,7 +29,6 @@ buttons.addEventListener("click", (e) => {
   }
 })
 
-
 function getComputerChoice() {
   let computerChoice;
 
@@ -43,21 +44,18 @@ function getComputerChoice() {
   return computerChoice
 }
 
-
-function getHumanChoice() {
-  let humanChoice = prompt("What is your choice?").toLowerCase();
-  return humanChoice
-}
-
 function playRound(humanChoice, computerChoice) {
   if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-    humanScore++
+    showResults.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+    results.appendChild(showResults);
+    humanScore++;
   } else if ((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "rock")) {
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-    computerScore++
+    showResults.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+    results.appendChild(showResults);
+    computerScore++;
   } else {
-    console.log(`It's a tie! You both chose ${humanChoice}`)
+    showResults.textContent = `It's a tie! You both chose ${humanChoice}`;
+    results.appendChild(showResults);
   }
 }
 
