@@ -1,3 +1,25 @@
+const buttons = document.querySelector(".buttons-container")
+
+buttons.addEventListener("click", (e) => {
+  let choice = e.target;
+  let playerSelection = ""
+
+  switch (choice.id) {
+    case "rock":
+      playerSelection = choice.id;
+      console.log(playerSelection)
+      break;
+    case "paper":
+      playerSelection = choice.id;
+      console.log(playerSelection)
+      break;
+    case "scissors":
+      playerSelection = choice.id;
+      console.log(playerSelection)
+      break;
+  }
+})
+
 
 let humanScore = 0;
 let computerScore = 0;
@@ -37,17 +59,17 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-//create a new function playGame that will play 5 rounds of RPS
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    //when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
+// //create a new function playGame that will play 5 rounds of RPS
+// function playGame() {
+//   for (let i = 0; i < 5; i++) {
+//     //when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
+//     let humanSelection = getHumanChoice();
+//     let computerSelection = getComputerChoice();
 
-    playRound(humanSelection, computerSelection)
-  }
-  declareWinner();
-}
+//     playRound(humanSelection, computerSelection)
+//   }
+//   declareWinner();
+// }
 
 
 function declareWinner() {
@@ -60,7 +82,7 @@ function declareWinner() {
   }
 }
 
-playGame();
+// playGame();
 
 
 
