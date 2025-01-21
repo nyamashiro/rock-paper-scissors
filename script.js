@@ -1,29 +1,31 @@
-const buttons = document.querySelector(".buttons-container")
-
-buttons.addEventListener("click", (e) => {
-  let choice = e.target;
-  let playerSelection = ""
-
-  switch (choice.id) {
-    case "rock":
-      playerSelection = choice.id;
-      console.log(playerSelection)
-      break;
-    case "paper":
-      playerSelection = choice.id;
-      console.log(playerSelection)
-      break;
-    case "scissors":
-      playerSelection = choice.id;
-      console.log(playerSelection)
-      break;
-  }
-})
-
-
+const buttons = document.querySelector(".buttons-container");
+const results = document.querySelector(".results");
 let humanScore = 0;
 let computerScore = 0;
 
+buttons.addEventListener("click", (e) => {
+  let choice = e.target;
+  let playerSelection = "";
+  let computerSelection = "";
+
+  switch (choice.id) {
+    case "rock":
+      computerSelection = getComputerChoice()
+      playerSelection = "rock";
+      playRound(playerSelection, computerSelection)
+      break;
+    case "paper":
+      computerSelection = getComputerChoice()
+      playerSelection = "paper";
+      playRound(playerSelection, computerSelection)
+      break;
+    case "scissors":
+      computerSelection = getComputerChoice()
+      playerSelection = "scissors";
+      playRound(playerSelection, computerSelection)
+      break;
+  }
+})
 
 
 function getComputerChoice() {
@@ -55,7 +57,18 @@ function playRound(humanChoice, computerChoice) {
     console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
     computerScore++
   } else {
-    console.log("It's a tie!")
+    console.log(`It's a tie! You both chose ${humanChoice}`)
+  }
+}
+
+
+function declareWinner() {
+  if (humanScore > computerScore) {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Player wins!`)
+  } else if (humanScore < computerScore) {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Computer wins!`)
+  } else {
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}. It's a tie!`)
   }
 }
 
@@ -70,19 +83,6 @@ function playRound(humanChoice, computerChoice) {
 //   }
 //   declareWinner();
 // }
-
-
-function declareWinner() {
-  if (humanScore > computerScore) {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Player wins!`)
-  } else if (humanScore < computerScore) {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Computer wins!`)
-  } else {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. It's a tie!`)
-  }
-}
-
-// playGame();
 
 
 
