@@ -1,7 +1,10 @@
 const buttons = document.querySelector(".buttons-container");
 const results = document.querySelector(".results");
+const playerScore = document.querySelector(".player-score");
+const opponentScore = document.querySelector(".computer-score");
 
 const showResults = document.createElement("div");
+const showWinner = document.createElement("div");
 let humanScore = 0;
 let computerScore = 0;
 
@@ -27,6 +30,7 @@ buttons.addEventListener("click", (e) => {
       playRound(playerSelection, computerSelection)
       break;
   }
+  declareWinner();
 })
 
 function getComputerChoice() {
@@ -47,40 +51,43 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice) {
   if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
     showResults.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
-    results.appendChild(showResults);
     humanScore++;
   } else if ((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "rock")) {
     showResults.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
-    results.appendChild(showResults);
     computerScore++;
   } else {
     showResults.textContent = `It's a tie! You both chose ${humanChoice}`;
-    results.appendChild(showResults);
   }
+  results.appendChild(showResults);
+  playerScore.textContent = `${humanScore}`;
+  opponentScore.textContent = `${computerScore}`;
+  
+
 }
 
 
 function declareWinner() {
-  if (humanScore > computerScore) {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Player wins!`)
-  } else if (humanScore < computerScore) {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. Computer wins!`)
+  if (humanScore === 5) {
+    showWinner.textContent = (`Player: ${humanScore}, Computer: ${computerScore}. You are the ultimate Rock Paper Scissors champion!`);
+    results.appendChild(showWinner)
+    humanScore = 0;
+    computerScore = 0;
+    //remove RPS buttons and replace with Play again button
+    //remove winner declaration div/text
+  } else if (computerScore === 5) {
+    showWinner.textContent = (`Player: ${humanScore}, Computer: ${computerScore}. You lost to the computer`);
+    results.appendChild(showWinner)
+    humanScore = 0;
+    computerScore = 0;
   } else {
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}. It's a tie!`)
+    if (humanScore < 5 && computerScore < 5) {
+      if (humanScore > computerScore) {
+        console.log(`Player: ${humanScore}, Computer: ${computerScore}.`)
+      } else if (humanScore < computerScore) {
+        console.log(`Player: ${humanScore}, Computer: ${computerScore}.`)
+      } else {
+        console.log(`Player: ${humanScore}, Computer: ${computerScore}.`)
+      }
+    }
   }
 }
-
-// //create a new function playGame that will play 5 rounds of RPS
-// function playGame() {
-//   for (let i = 0; i < 5; i++) {
-//     //when we create these variables, they are assigned the return value of the functions. The functions automatically run when the page is loaded
-//     let humanSelection = getHumanChoice();
-//     let computerSelection = getComputerChoice();
-
-//     playRound(humanSelection, computerSelection)
-//   }
-//   declareWinner();
-// }
-
-
-
